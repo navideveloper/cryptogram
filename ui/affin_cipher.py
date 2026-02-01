@@ -8,31 +8,31 @@ class Affin(flet.Container):
         self.field_alphabet = flet.TextField(
             hint_text='Alifbo',expand=True,hint_style=TEXT_STYLE_PATH,
             border_radius=8,bgcolor="#F1F1F1",border_color="#8f8f8f",focused_border_width=1,
-            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),
+            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),on_change=self.call_encrypt,
             value=affin_cipher.ALPHABET,cursor_color='#1E6EF4'
         )
         self.field_key_a = flet.TextField(
             hint_text='A kalit',width=100,hint_style=TEXT_STYLE_PATH,
             border_radius=8,bgcolor="#F1F1F1",border_color="#8f8f8f",focused_border_width=1,
-            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),
+            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),on_change=self.call_encrypt,
             value=7,cursor_color='#1E6EF4'
         )
         self.field_key_b = flet.TextField(
             hint_text='A kalit',width=100,hint_style=TEXT_STYLE_PATH,
             border_radius=8,bgcolor="#F1F1F1",border_color="#8f8f8f",focused_border_width=1,
-            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),
+            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),on_change=self.call_encrypt,
             value=9,cursor_color='#1E6EF4',keyboard_type=flet.KeyboardType.NUMBER
         )
         self.field_text = flet.TextField(
             hint_text='Shifrlanishi kerak bolgan matn',expand=True,hint_style=TEXT_STYLE_PATH,
             border_radius=8,bgcolor="#F1F1F1",border_color="#8f8f8f",focused_border_width=1,
-            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),
+            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),on_change=self.call_encrypt,
             cursor_color='#1E6EF4'
         )
         self.field_cipher = flet.TextField(
             hint_text='Shifrlangan matn',expand=True,hint_style=TEXT_STYLE_PATH,
             border_radius=8,bgcolor="#F1F1F1",border_color="#8f8f8f",focused_border_width=1,
-            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),
+            text_style=flet.TextStyle(font_family='sans',size=18,color='black'),on_change=self.call_decrypt,
             cursor_color='#1E6EF4'
         )
         self.content = flet.Column([
@@ -66,10 +66,10 @@ class Affin(flet.Container):
                         flet.Text('Shifrli Matn ',style=TEXT_STYLE_LABEL),
                         self.field_cipher
                     ]),
-                    flet.Row([
-                        flet.Button('shifrlash',style=BUTTON_STYLE_MENU,height=40,width=300,on_click=self.call_encrypt),
-                        flet.Button('shifrini ochish',style=BUTTON_STYLE_MENU,height=40,width=300,on_click=self.call_decrypt)
-                    ],alignment=flet.MainAxisAlignment.SPACE_EVENLY)
+                    # flet.Row([
+                    #     flet.Button('shifrlash',style=BUTTON_STYLE_MENU,height=40,width=300,on_click=self.call_encrypt),
+                    #     flet.Button('shifrini ochish',style=BUTTON_STYLE_MENU,height=40,width=300,on_click=self.call_decrypt)
+                    # ],alignment=flet.MainAxisAlignment.SPACE_EVENLY)
                 ]),width=700,padding=flet.Padding.all(20),border_radius=12,bgcolor='#D1D1D6'
             )
         ])
@@ -88,5 +88,13 @@ class Affin(flet.Container):
         self.field_cipher.update()
 
     def call_decrypt(self,e):
-        pass
-    
+        a,b = str(self.field_key_a.value),str(self.field_key_b.value)
+        if a.isdigit() and b.isdigit():
+            self.field_text.value = affin_cipher.decrypt(
+                cipher_text=self.field_cipher.value,
+                key=(int(a),int(b)),
+                alphabet=self.field_alphabet.value
+            )
+        else:
+            self.field_text.value = 'Kalit raqam bolishi kerak!'
+        self.field_text.update()
