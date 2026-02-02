@@ -1,4 +1,5 @@
 from ui.affin_cipher import Affin
+from ui.playfair_cipher import Playfair
 from styles import TEXT_STYLE_TITLE,BUTTON_STYLE_MENU
 import flet
 
@@ -15,7 +16,7 @@ def Menu():
                         flet.Text('Simmetrik shifrlash algoritmlari',style=TEXT_STYLE_TITLE),
                     ),
                     flet.Button('Sezarning affin shifri',style=BUTTON_STYLE_MENU,height=50,width=340,on_click=lambda e: on_click(e,Affin)),
-                    flet.Button('Uinstonning ikkilangan kvadrati',style=BUTTON_STYLE_MENU,height=50,width=340),
+                    flet.Button('Uinstonning ikkilangan kvadrati',style=BUTTON_STYLE_MENU,height=50,width=340,on_click=lambda e: on_click(e,Playfair)),
                     flet.Button('Analitik usul',style=BUTTON_STYLE_MENU,height=50,width=340),
                 ]),
                 bgcolor="#D1D1D6",padding=20,border_radius=12
@@ -41,7 +42,7 @@ def main(page:flet.Page):
         on_click(e,Menu)
     page.window.resizable = False
     page.window.width = 900
-    page.window.height = 500
+    page.window.height = 600
     page.padding = 0
     page.vertical_alignment = flet.MainAxisAlignment.CENTER
     page.horizontal_alignment = flet.MainAxisAlignment.CENTER
@@ -51,8 +52,7 @@ def main(page:flet.Page):
     }
     page.back = back_to_menu
     page.add(
-        # Menu()
-        Affin()
+        Menu()
     )
 
 flet.run(main,assets_dir='assets')

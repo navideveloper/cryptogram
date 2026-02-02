@@ -39,8 +39,9 @@ class Affin(flet.Container):
             flet.Container(
                 flet.Row([
                     flet.Button('ortga',icon=flet.Icons.ARROW_BACK_IOS,style=BUTTON_STYLE_MENU,on_click=lambda e: e.page.back(e)),
-                    flet.Text('Simetrik shifrlash / Sezorning Affin Shifri',style=TEXT_STYLE_PATH)
-                ],spacing=50),width=700,padding=flet.Padding.all(20),border_radius=12,bgcolor='#D1D1D6'
+                    flet.Text('Simetrik shifrlash / Sezorning Affin Shifri',style=TEXT_STYLE_PATH),
+                    flet.Container()
+                ],alignment=flet.MainAxisAlignment.SPACE_BETWEEN),width=700,padding=flet.Padding.all(20),border_radius=12,bgcolor='#D1D1D6'
             ),
             flet.Container(
                 flet.Column([
