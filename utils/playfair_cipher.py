@@ -71,7 +71,7 @@ def encrypt(plain_text: str, keyword: str=''):
     return cipher_text
 
 def decrypt(cipher_text: str, keyword: str=''):
-    if not cipher_text or len(cipher_text) % 2 != 0:
+    if not cipher_text or len(cipher_text.replace(' ','')) % 2 != 0:
         return ''
     square_matrix = square(keyword)
 

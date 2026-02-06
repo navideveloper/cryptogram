@@ -7,19 +7,19 @@ class Playfair(flet.Container):
         super().__init__()
         self.field_keyword = flet.TextField(
             hint_text='Kalit So`z',expand=True,hint_style=TEXT_STYLE_PATH,
-            border_radius=8,bgcolor="#F1F1F1",border_color="#8f8f8f",focused_border_width=1,
+            border_radius=8,bgcolor="#F5F4F7",border_color=flet.Colors.with_opacity(0.1,'black'),focused_border_width=1,
             text_style=flet.TextStyle(font_family='sans',size=18,color='black'),on_change=self.call_matrix,
             cursor_color='#1E6EF4'
         )
         self.field_text = flet.TextField(
             hint_text='Shifrlanishi kerak bolgan xabar',expand=True,hint_style=TEXT_STYLE_PATH,
-            border_radius=8,bgcolor="#F1F1F1",border_color="#8f8f8f",focused_border_width=1,
+            border_radius=8,bgcolor="#F5F4F7",border_color=flet.Colors.with_opacity(0.1,'black'),focused_border_width=1,
             text_style=flet.TextStyle(font_family='sans',size=18,color='black'),on_change=self.call_encrypt,
             cursor_color='#1E6EF4'
         )
         self.field_cipher = flet.TextField(
             hint_text='Shifrlangan matn',expand=True,hint_style=TEXT_STYLE_PATH,
-            border_radius=8,bgcolor="#F1F1F1",border_color="#8f8f8f",focused_border_width=1,
+            border_radius=8,bgcolor="#F5F4F7",border_color=flet.Colors.with_opacity(0.1,'black'),focused_border_width=1,
             text_style=flet.TextStyle(font_family='sans',size=18,color='black'),on_change=self.call_decrypt,
             cursor_color='#1E6EF4'
         )
@@ -30,7 +30,8 @@ class Playfair(flet.Container):
                     flet.Button('ortga',icon=flet.Icons.ARROW_BACK_IOS,style=BUTTON_STYLE_MENU,on_click=lambda e: e.page.back(e)),
                     flet.Text('Simetrik shifrlash / Uinstonning ikkilangan kvadrati',style=TEXT_STYLE_PATH),
                     flet.Container()
-                ],alignment=flet.MainAxisAlignment.SPACE_BETWEEN),width=700,padding=flet.Padding.all(20),border_radius=12,bgcolor='#D1D1D6'
+                ],alignment=flet.MainAxisAlignment.SPACE_BETWEEN),shadow=flet.BoxShadow(1,6,flet.Colors.with_opacity(0.1,'black')),
+                width=700,padding=flet.Padding.all(20),border_radius=12,bgcolor='#ffffff'
             ),
             flet.Container(
                 flet.Column([
@@ -54,7 +55,7 @@ class Playfair(flet.Container):
                     #     flet.Button('shifrlash',style=BUTTON_STYLE_MENU,height=40,width=300,on_click=self.call_encrypt),
                     #     flet.Button('shifrini ochish',style=BUTTON_STYLE_MENU,height=40,width=300,on_click=self.call_decrypt)
                     # ],alignment=flet.MainAxisAlignment.SPACE_EVENLY)
-                ]),width=700,padding=flet.Padding.all(20),border_radius=12,bgcolor='#D1D1D6'
+                ]),width=700,padding=flet.Padding.all(20),border_radius=12,bgcolor='#ffffff',shadow=flet.BoxShadow(1,6,flet.Colors.with_opacity(0.1,'black'))
             )
         ])
         self.width = 700
@@ -73,7 +74,7 @@ class Playfair(flet.Container):
                         flet.Text(i,size=18,color='#1E6EF4',font_family='sans'),
                         width=30,height=30,bgcolor='#F1F1F1',
                         alignment=flet.Alignment.CENTER,
-                        border=flet.Border.all(1,'black')
+                        border=flet.Border.all(1,flet.Colors.with_opacity(0.4,'black'))
                     )
                 )
             self.square_matrix.controls.append(ROW)

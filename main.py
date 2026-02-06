@@ -19,7 +19,7 @@ def Menu():
                     flet.Button('Uinstonning ikkilangan kvadrati',style=BUTTON_STYLE_MENU,height=50,width=340,on_click=lambda e: on_click(e,Playfair)),
                     flet.Button('Analitik usul',style=BUTTON_STYLE_MENU,height=50,width=340),
                 ]),
-                bgcolor="#D1D1D6",padding=20,border_radius=12
+                bgcolor="#ffffff",shadow=flet.BoxShadow(1,6,flet.Colors.with_opacity(0.1,'black')),padding=20,border_radius=12
             ),
             flet.Container(
                 flet.Column([
@@ -32,7 +32,7 @@ def Menu():
                     flet.Button('EL-Gamal',style=BUTTON_STYLE_MENU,height=50,width=340),
                     flet.Button('Eyler funksiyasi',style=BUTTON_STYLE_MENU,height=50,width=340),
                 ]),
-                bgcolor="#D1D1D6",padding=20,border_radius=12
+                bgcolor="#ffffff",shadow=flet.BoxShadow(1,6,flet.Colors.with_opacity(0.1,'black')),padding=20,border_radius=12
             )
         ],alignment=flet.MainAxisAlignment.CENTER,vertical_alignment=flet.CrossAxisAlignment.START),
     )
@@ -42,17 +42,17 @@ def main(page:flet.Page):
         on_click(e,Menu)
     page.window.resizable = False
     page.window.width = 900
-    page.window.height = 600
+    page.window.height = 700
     page.padding = 0
     page.vertical_alignment = flet.MainAxisAlignment.CENTER
     page.horizontal_alignment = flet.MainAxisAlignment.CENTER
-    page.bgcolor = "#EEEEEE"
+    page.bgcolor = "#F3EFEF"
     page.fonts = {
         'sans':'DM-sans.ttf'
     }
     page.back = back_to_menu
     page.add(
-        Menu()
+        Affin()
     )
 
 flet.run(main,assets_dir='assets')
