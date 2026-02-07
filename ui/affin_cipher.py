@@ -77,7 +77,7 @@ class Affin(flet.Container):
                         height=200, # Set your fixed height here
                         bgcolor="#F5F4F7",
                         border_radius=10,padding=flet.Padding.only(left=20,right=5),
-                        border=flet.border.all(1, flet.Colors.with_opacity(0.1,'black')),
+                        border=flet.Border.all(1, flet.Colors.with_opacity(0.1,'black')),
                     )
                 ]),width=700,padding=flet.Padding.all(20),border_radius=12,bgcolor="#ffffff",
                 shadow=flet.BoxShadow(1,6,flet.Colors.with_opacity(0.1,'black'))

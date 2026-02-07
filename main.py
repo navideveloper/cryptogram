@@ -1,5 +1,6 @@
 from ui.affin_cipher import Affin
 from ui.playfair_cipher import Playfair
+from ui.login import Login
 from styles import TEXT_STYLE_TITLE,BUTTON_STYLE_MENU
 import flet
 
@@ -52,7 +53,7 @@ def main(page:flet.Page):
     }
     page.back = back_to_menu
     page.add(
-        Affin()
+        Login()
     )
 
 flet.run(main,assets_dir='assets')

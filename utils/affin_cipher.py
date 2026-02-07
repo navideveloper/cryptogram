@@ -1,6 +1,6 @@
 import math
 
-ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+ALPHABET = ''.join(chr(i) for i in range(32, 127))
 
 def mod_inverse(a, m):
     for x in range(1, m):
@@ -14,8 +14,8 @@ def encrypt(plain_text:str,key:tuple,alphabet=ALPHABET):
     m = len(alphabet)
     cipher_text = ''
     if math.gcd(a,m) != 1:
-        return "'a' kaliti va alifbo uzunligi 'm' o'zaro tub bo'lishi shart!"
-    for char in plain_text.lower():
+        return "'a' kaliti va alifbo uzunligi 'm' o'zaro tub bo'lishi shart!",''
+    for char in plain_text:
         if char in alphabet:
             x=alphabet.index(char)
             y=(a*x+b)%m
@@ -34,8 +34,8 @@ def decrypt(cipher_text:str,key:tuple,alphabet=ALPHABET):
     logs += f'\nA invers: {a_inverse}'
     plain_text = ''
     if a_inverse is None:
-        return "'a' kaliti ({a}) va alfavit uzunligi ({m}) o'zaro tub bo'lishi shart!"
-    for char in cipher_text.lower():
+        return "'a' kaliti ({a}) va alfavit uzunligi ({m}) o'zaro tub bo'lishi shart!",''
+    for char in cipher_text:
         if char in alphabet:
             y=alphabet.index(char)
             x=((y-b)*a_inverse)%m
